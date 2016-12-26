@@ -25,8 +25,40 @@
     <script>
         function pow(x, n) {
             /* логика */
-            return 8;
+            var result = 1;
+
+            for (var i = 0; i < n; i++) {
+                result *= x;
+            }
+
+            console.log("result = " + result);
+
+            return result;
         }
+
+        var menu = {
+            width: 300,
+            height: 200,
+            title: 'меню'
+        }
+
+        for (var key in menu) {
+            console.log("Ключ: " + key + " имеет значение " + menu[key]);
+        }
+
+        function isEmpty(obj) {
+            if(Object.keys(obj).length == 0) {
+                return true;
+            }
+            return false;
+        }
+
+        var scheduler = {};
+
+        alert(isEmpty(scheduler));
+        scheduler["8:30"] = "подъем!";
+        alert(scheduler);
+        alert(isEmpty(scheduler));
     </script>
 
     <!-- объявляем спеки для тестов -->
