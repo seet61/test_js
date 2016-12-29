@@ -5,6 +5,42 @@
     <title>Title</title>
 </head>
 <body>
+    <script>
+        var obj = {className : 'open menu'}
 
+        function addClass(obj, word) {
+            if (obj.className.indexOf(word)) {
+                obj.className = obj.className + ' ' + word;
+                console.log(obj);
+            }
+            else {
+                console.log('class already exist');
+            }
+        }
+
+        addClass(obj, 'new');
+        addClass(obj, 'open');
+        addClass(obj, 'me');
+
+        function camelize(words) {
+            words = words.split('-');
+            newWord = '';
+            for (var i =0; i < words.length; i++) {
+                if (words[i].length > 0) {
+                    if (i != 0) {
+                        newWord = newWord + words[i].charAt(0).toUpperCase() + words[i].slice(1);
+                    }
+                    else {
+                        newWord = words[i];
+                    }
+                }
+            }
+            return newWord;
+        }
+
+        console.log(camelize("background-color"));
+        console.log(camelize("list-style-image"));
+        console.log(camelize("-webkit-transition"));
+    </script>
 </body>
 </html>
