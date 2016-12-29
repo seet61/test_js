@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function ucFirst(word) {
+            /*if (word != undefined) {
+                if (word.length >= 1) {
+                    return word.charAt(0).toUpperCase() + word.substr(1);
+                }
+                return '';
+            }*/
+            // только пустая строка в логическом контексте даст false
+            if (!word) return word;
+
+            if (word.length >= 1) {
+                return word.charAt(0).toUpperCase() + word.substr(1);
+            }
+        }
+
+        alert(ucFirst('вася') == 'Вася');
+        alert(ucFirst('') == '');
+        
+        function checkSpam(words) {
+            var flag = false;
+            var BANWORDS = ['xxx', 'viagra'];
+            for (var i=0; i < BANWORDS.length; i++) {
+                if (~(words.toLowerCase()).indexOf(BANWORDS[i])) {
+                    flag = true;
+                }
+            }
+            return flag;
+        }
+
+        alert( 'bad words: ' + (checkSpam('buy ViAgRA now')).toString());
+        alert('bad words: ' + (checkSpam('free xxxxx')).toString());
+        alert('bad words: ' + (checkSpam("innocent rabbit")).toString());
+
+        function truncate(string, value) {
+            if (string.length > value) {
+                return string.substring(0,value-3) + '...';
+            }
+            else {
+                return string;
+            }
+        }
+
+        alert(truncate("Вот, что мне хотелось бы сказать на эту тему:", 20) );
+
+        var obj = {};
+        obj['name'] = 'Вася';
+        obj['surname'] = 'Петров';
+        console.log(obj);
+        obj['name'] = 'Сергей';
+        console.log(obj);
+        delete obj['name'];
+        console.log(obj);
+    </script>
+</body>
+</html>

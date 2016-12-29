@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>circuit</title>
+</head>
+<body>
+    <script>
+        /*
+        function sum(a) {
+            return function (b) {
+                return a + b;
+            };
+        }
+
+        alert(sum(2)(2));
+        alert(sum(3)(3));
+        */
+
+        function makeBuffer() {
+            var buf = "";
+            function buffer(text) {
+                if (arguments.length == 0) {
+                    // Вызов без параметров.
+                    return buf;
+                }
+                buf += text;
+            };
+
+            buffer.clear = function () {
+                buf = "";
+            }
+
+            return buffer;
+        };
+
+
+        var buffer = makeBuffer();
+        // добавить значения к буферу
+        buffer('Замыкания');
+        buffer(' Использовать');
+        buffer(' Нужно!');
+        alert( buffer() );
+        buffer.clear();
+        alert( buffer() );
+
+        var users = [{
+            name: "Вася",
+            surname: 'Иванов',
+            age: 20
+        }, {
+            name: "Петя",
+            surname: 'Чапаев',
+            age: 25
+        }, {
+            name: "Маша",
+            surname: 'Медведева',
+            age: 18
+        }];
+
+        function byField(field) {
+            return function (a, b) {
+                return a[field] > b[field] ? 1 : -1;
+            }
+        }
+
+        users.sort(byField('name'));
+        users.forEach(function (user) {
+           console.log(user.name);
+        });
+
+        users.sort(byField('age'));
+        users.forEach(function (user) {
+            console.log(user.name);
+        });
+
+    </script>
+</body>
+</html>
