@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Closures</title>
+</head>
+<body>
+    <script>
+        function sum(a) {
+            return function (b) {
+                return a + b;
+            };
+        }
+
+        console.log('res: ' + sum(1)(2));
+        console.log('res: ' + sum(5)(-1));
+
+        function makeBuffer() {
+            var buf = '';
+
+            function buffer(string) {
+                if (arguments.length == 0) {
+                    return buf;
+                }
+                else {
+                    buf += string;
+                }
+            }
+
+            buffer.clear = function () {
+                buf = '';
+            }
+
+            return buffer;
+        }
+
+        var buffer = makeBuffer();
+
+        // добавить значения к буферу
+        buffer('Замыкания');
+        buffer(' Использовать');
+        buffer(' Нужно!');
+
+        // получить текущее значение
+        alert( buffer() ); // Замыкания Использовать Нужно!
+
+        var buffer2 = makeBuffer();
+        buffer2(0);
+        buffer2(1);
+        buffer2(0);
+
+        alert( buffer2() ); // '010'
+
+        buffer2.clear();
+
+        alert( buffer2() ); // ''
+    </script>
+</body>
+</html>
